@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>نظام غيث المتكامل - مؤسسة غيث للتنمية المجتمعية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#1b6b4a;--a:#d9a441;--bg:#f1f4f2;--c:#fff;--t:#1d2a24;--l:#d9e2dc;--m:#66736c;--s:#f0f6f2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#121815;--c:#1b2420;--t:#e7efe9;--l:#2c3a33;--m:#93a39a;--s:#222d27}}
+:root[data-theme=dark]{--bg:#121815;--c:#1b2420;--t:#e7efe9;--l:#2c3a33;--m:#93a39a;--s:#222d27}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--t);font:14px/1.6 Cairo,'Segoe UI',Tahoma,sans-serif}
+header{background:var(--p);color:#fff;border-bottom:4px solid var(--a);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header[hidden]{display:none}
+#hb{display:flex;align-items:center;gap:10px;padding:8px 16px;flex-wrap:wrap}
+#hb img{height:40px;border-radius:6px;background:#fff}#hb b{font-size:17px;font-weight:800}
+#hb .u{font-size:12px;opacity:.9}
+#nav{display:flex;gap:4px;overflow-x:auto;padding:0 12px}
+#nav button{background:none;border:0;color:#fff;opacity:.8;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+#nav button.on{opacity:1;border-color:var(--a)}
+main{width:100%;max-width:none;margin:0;padding:16px clamp(12px,2vw,32px)}
+#hb,#nav{padding-inline:clamp(12px,2vw,32px)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+.card{background:var(--c);border:1px solid var(--l);border-radius:12px;padding:12px 14px;border-inline-start:5px solid var(--a)}
+.card small{color:var(--m)}.card h2{margin:2px 0 0;font-size:22px;color:var(--p)}
+.box{background:var(--c);border:1px solid var(--l);border-radius:12px;padding:14px;margin-bottom:16px;overflow-x:auto}
+.box h3{margin:0 0 10px;color:var(--p)}
+.tb{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center}.tb h2{margin:0;flex:1;color:var(--p)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--p);color:#fff;padding:8px;font-size:13px;text-align:right}
+td{padding:7px 8px;border-bottom:1px solid var(--l);font-size:13px}
+tbody tr:nth-child(even){background:var(--s)}
+.b{border:0;border-radius:8px;padding:6px 12px;font:inherit;font-weight:600;cursor:pointer;background:var(--p);color:#fff}
+.b:disabled{opacity:.6;cursor:wait}
+.b.g{background:var(--a);color:#1d2a24}.b.o{background:none;color:var(--p);border:1px solid var(--p)}.b.r{background:#b3261e;color:#fff}
+.b.h{background:rgba(255,255,255,.18);color:#fff}.bn{background:#c0392b;color:#fff;border-radius:99px;padding:0 6px;font-size:11px}.att .al{margin:4px 0}.att .ai{display:flex;gap:8px;align-items:center;padding:3px 0;border-bottom:1px dashed var(--l)}.bar{background:#eee;border-radius:6px;height:12px;min-width:120px;overflow:hidden}.bar i{display:block;height:100%}
+.b.s{padding:1px 9px;font-size:12px;margin:1px}
+input,select,textarea{font:inherit;color:var(--t);background:var(--c);border:1px solid var(--l);border-radius:8px;padding:6px 8px;width:100%}
+input[readonly]{opacity:.7}
+input[type=color]{padding:0;height:34px}
+.st{padding:1px 10px;border-radius:99px;font-size:12px;font-weight:700;background:var(--s);color:var(--p);border:1px solid var(--p);white-space:nowrap}
+.bar{height:10px;background:var(--a);border-radius:5px;min-width:3px}
+.mu{color:var(--m)}
+dialog{border:0;border-radius:14px;width:min(780px,96vw);padding:0;background:var(--c);color:var(--t);max-height:92vh}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+.dh{background:var(--p);color:#fff;padding:10px 16px;font-weight:800;border-bottom:3px solid var(--a)}
+.db{padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;overflow:auto}
+.db label,.lg label{display:block;font-size:12px;color:var(--m);font-weight:600}
+.full{grid-column:1/-1}
+.df{padding:10px 16px;display:flex;gap:8px;border-top:1px solid var(--l)}
+.tbm{border:1px solid var(--l);border-radius:8px;padding:6px 10px;margin-bottom:6px}.tbm summary{cursor:pointer;font-weight:700;color:var(--p)}.pm{border-collapse:collapse;width:100%;font-size:13px}.pm th,.pm td{border:1px solid var(--l);padding:4px 8px;text-align:center}.pm td:first-child{text-align:right}.tbg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:8px}
+.ss{position:relative;display:inline-block;max-width:100%}.ss>input{width:100%;box-sizing:border-box;padding-inline-end:26px;background:var(--c) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E") no-repeat left 8px center;cursor:pointer}
+.ssl{position:fixed;z-index:200;background:var(--c);border:1px solid var(--p);border-radius:8px;box-shadow:0 8px 24px #0003;max-height:260px;overflow:auto;padding:4px;min-width:200px}
+.ssl div{padding:6px 10px;border-radius:6px;cursor:pointer;white-space:normal}.ssl div.on,.ssl div:hover{background:var(--p);color:#fff}.ssl div.no{color:var(--m);cursor:default}.ssl div.no:hover{background:none;color:var(--m)}
+.lg{max-width:380px;margin:8vh auto}.lg img{height:70px;display:block;margin:0 auto 8px}.lg h2{text-align:center;margin:0;color:var(--p)}.lg p{text-align:center;margin:4px 0 14px}.lg input{margin-bottom:8px}
+#busy{position:fixed;top:0;left:0;right:0;height:3px;background:var(--a);z-index:50;animation:bz 1s linear infinite;transform-origin:right}
+#busy[hidden]{display:none}
+@keyframes bz{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--p);color:#fff;padding:8px 18px;border-radius:99px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60;max-width:92vw;text-align:center}
+#toast.on{opacity:1}#toast.er{background:#b3261e}
+#ps{display:none}
+@media(max-width:640px){.db{grid-template-columns:1fr}}
+@media print{@page{size:A4;margin:8mm}body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}body>*:not(#ps){display:none!important}#ps{display:block}}
+#ps{background:#fff;color:#1d2a24;font-size:12px}
+#ps .h{display:flex;align-items:center;gap:14px;padding:10px 6px;border-bottom:3px solid var(--p)}
+#ps .h img{width:90px;height:90px;object-fit:contain}#ps .h div:nth-child(2){flex:1}
+#ps h1{margin:0;color:var(--p);font-size:22px}
+#ps .t{background:var(--p);color:#fff;font-weight:800;font-size:18px;padding:6px 20px;border-radius:8px;border-bottom:4px solid var(--a)}
+#ps .g{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+#ps .g div{border:1px solid #d9e2dc;border-radius:8px;overflow:hidden}
+#ps h4{margin:0;background:var(--p);color:#fff;padding:3px 10px;border-inline-start:5px solid var(--a)}
+#ps p{margin:0;padding:2px 10px;border-top:1px solid #d9e2dc}
+#ps td{border:1px solid #d9e2dc;color:#1d2a24;text-align:center}#ps tbody tr:nth-child(even){background:#f0f6f2}
+#ps .tt{margin:10px 0 10px auto;width:240px}#ps .tt p{display:flex;justify-content:space-between}
+#ps .tt p:last-child{background:var(--p);color:#fff;font-weight:800}
+#ps .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+#ps .sg div{border:1px solid #d9e2dc;border-radius:8px;height:90px;text-align:center;font-weight:700;color:var(--p);padding-top:6px}
+#ps .ft{margin-top:12px;background:var(--p);color:#fff;text-align:center;padding:6px;border-top:4px solid var(--a)}
+#mods{display:flex;gap:6px;padding:2px 16px 8px;flex-wrap:wrap}
+#mods button{background:rgba(255,255,255,.16);border:0;color:#fff;border-radius:99px;padding:3px 16px;font:inherit;font-weight:700;cursor:pointer}
+#mods button.on{background:#fff;color:var(--p)}
+.warn{color:#b3261e;font-weight:700}.good{color:#1b7a3a;font-weight:700}
+.db label.chk,label.chk{display:inline-flex;gap:6px;align-items:center;margin:2px 10px 2px 0;font-size:13px;color:var(--t);font-weight:400}
+.chk input{width:auto}
+.sub{color:var(--m);font-size:12px}
+.sel-sm{width:auto;min-width:150px}
+.av{font-size:12px;white-space:nowrap}
+.tot td{font-weight:800;background:var(--s)}
+</style>
+<script src="config.js"></script>
+</head>
+<body>
+<div id="busy" hidden></div>
+<header hidden><div id="hb"></div><div id="mods"></div><nav id="nav"></nav></header>
+<main id="v"></main>
+<div id="ps"></div>
+<div id="toast"></div>
+<datalist id="pjl"></datalist>
+<dialog id="m"><div class="dh" id="mt"></div><div class="db" id="mb"></div><div class="df"><button class="b" id="ms"></button><button class="b o" id="mc" onclick="dlg.close()">إغلاق</button></div></dialog>
+<script>
+/* =====================================================================
+   نواة الواجهة: الاتصال، الدخول، الصلاحيات، تبديل المديولات، المستخدمون، الإعدادات
+   المديولات في ملفات منفصلة: mod-procurement.js (المشتريات) و mod-inventory.js (المخازن)
+   كل مديول يسجّل نفسه في MODS ويضيف شاشاته إلى V وإجراءاته إلى A
+   ===================================================================== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const f=n=>(+n||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const q3=n=>(+n||0).toLocaleString('en-US',{maximumFractionDigits:3});
+const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const r2=n=>Math.round((+n||0)*100+(n<0?-1e-9:1e-9))/100;
+
+const CFG=window.CFG||{};
+let API_URL=(CFG.API||localStorage.getItem('gh_api')||'').trim(),tok=localStorage.getItem('gh_tok')||'';
+const ROLES={none:'بدون وصول',requester:'طالب شراء',approver:'معتمد',procurement:'مشتريات',finance:'مالية',admin:'مدير النظام'};
+const AROLES={none:'بدون وصول',accountant:'محاسب',manager:'مدير حسابات',viewer:'مراجع (اطلاع فقط)',admin:'مدير النظام'};
+const DROLES={none:'بدون وصول',officer:'مسؤول تبرعات',manager:'مدير تبرعات',viewer:'مراجع (اطلاع فقط)',admin:'مدير النظام'};
+const IROLES={none:'بدون وصول',requester:'طالب صرف',storekeeper:'أمين مخزن',manager:'مدير مخازن',viewer:'مراجع (اطلاع فقط)',admin:'مدير النظام'};
+let D={user:null,settings:{org:'نظام غيث',tag:'',vat:14,p:'#1b6b4a',a:'#d9a441',logo:'',invLink:true,tol:0},pr:[],po:[],sup:[],users:[],log:[],notifs:[],unread:0,extra:{budCtl:'off',notifMail:false},bud:{list:[]},projects:[],projUse:{},projLegacy:[],profiles:[],depts:[],deptUse:{},deptLegacy:[],catalog:[],avail:{},inv:null,don:{role:'none',donors:[],campaigns:[],donations:[],pledges:[],comms:[],cashAccts:[],whs:[],items:[],sum:null},acc:{linked:false,role:'none',accounts:[],projects:[],projNames:[],je:[],pays:[],ap:[],payAccts:[],bal:{},sum:null}};
+let mod='proc',view='',H,force=false,A={},V={};
+const MODS={},LASTV={},NAVX={acc:[],proc:[],inv:[],don:[],adm:[],ben:[],hr:[]};
+const tl=k=>(D.user&&D.user.role!=='admin'&&D.user.tabs&&D.user.tabs[k])||'';
+var ssOpen=null;
+const PJ=()=>D.projects||[];
+const pjf=v=>{v=String(v||'').trim().toLowerCase();return v?PJ().find(p=>p.code.toLowerCase()===v||p.name.trim().toLowerCase()===v):null};
+const pjl=v=>{if(!v)return '';const p=pjf(v);return p?p.code+' · '+p.name:v};
+const RO_OK=['bell','nt','ntall','attGet','attRef','go','mod','out','pw','ref','xl','card','vd','vpo','vpr','vje','vje2','pd','pdx','pp','ppx','pje','pjex','glRun','glPr','tbRun','tbPr','repRun','repPr','repT','rec','chk','vdn','qdb','dst','dstp','dstx','rcp','rcpx','drRun','drPr','dgo'];
+const roStrip=r=>$$(r+' [data-a]').forEach(b=>{if(!RO_OK.includes(b.dataset.a))b.remove()});
+const DP=()=>D.depts||[];
+const dpf=v=>{v=String(v||'').trim().toLowerCase();return v?DP().find(p=>p.code.toLowerCase()===v||p.name.trim().toLowerCase()===v):null};
+const dpl=v=>{if(!v)return '';const p=dpf(v);return p?p.name:v};
+const dsl=(l,v,c='',nm='dept',nodef)=>{
+  const cur0=(dpf(v)||{}).code||(v||'');
+  if(!DP().length)return `<div class="${c}"><label>${l}</label><input name="${nm}" type="text" value="${esc(v||'')}"><small class="mu">لم يُعرَّف دليل إدارات بعد (الإدارة ← الإدارات)</small></div>`;
+  const p=dpf(v),cur=p?p.code:(v||(nodef?'':(D.user&&D.user.dept)||''));
+  return `<div class="${c}"><label>${l}</label><select name="${nm}"><option value="">— اختر الإدارة —</option>${DP().filter(x=>x.active||x.code===cur0).map(x=>`<option value="${esc(x.code)}"${x.code===cur?' selected':''}>${esc(x.code+' · '+x.name)}</option>`).join('')}${v&&!p?`<option value="${esc(v)}" selected>${esc(v)} (غير مُكوَّدة)</option>`:''}</select></div>`};
+const psl=(l,v,c='')=>{
+  if(!PJ().length)return `<div class="${c}"><label>${l}</label><input name="proj" type="text" value="${esc(v||'')}"><small class="mu">لم يُعرَّف دليل مشاريع بعد (الإدارة ← المشاريع)</small></div>`;
+  const p=pjf(v),cur=p?p.code:(v||'');
+  return `<div class="${c}"><label>${l}</label><select name="proj"><option value="">— بدون مشروع —</option>${PJ().filter(x=>x.active||x.code===cur).map(x=>`<option value="${esc(x.code)}"${x.code===cur?' selected':''}>${esc(x.code+' · '+x.name)}</option>`).join('')}${v&&!p?`<option value="${esc(v)}" selected>${esc(v)} (غير مُكوَّد)</option>`:''}</select></div>`};
+const dlg=$('#m'),R=()=>D.user.role,is=(...r)=>r.includes(R()),ir=()=>D.user.inv,iis=(...r)=>r.includes(ir());
+const S=()=>D.settings;
+
+/* ---------- الاتصال بالخادم ---------- */
+let nb=0,RID='';
+const newRid=()=>Math.random().toString(36).slice(2,12)+Date.now().toString(36);
+async function api(a,d={}){
+  $('#busy').hidden=false;nb++;
+  try{
+    const free=['bootstrap','login','pub','ping'].includes(a);
+    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:a,token:tok,data:d,sync:free?undefined:1,rid:free?undefined:((dlg.open&&RID)?RID:newRid())})});
+    const j=await r.json();
+    if(!j.ok){if(j.auth&&a!=='login')out(true);throw new Error(j.error||'خطأ غير معروف')}
+    // الخادم أرجع أحدث البيانات مع نتيجة العملية: نطبّقها فورًا بدل طلب تحميل ثانٍ
+    if(j.boot){const b=j.boot;delete j.boot;delete b.ok;if(b.user&&!b.user.mustChange)applyBoot(b);fbNotify()}
+    return j;
+  }catch(e){if(e instanceof TypeError||e instanceof SyntaxError)throw new Error('تعذر الاتصال بالخادم، تحقق من الرابط في config.js');throw e}
+  finally{if(!--nb)$('#busy').hidden=true}
+}
+function toast(m,e){const t=$('#toast');t.textContent=m;t.className=e?'er on':'on';clearTimeout(toast.t);toast.t=setTimeout(()=>t.className='',3800)}
+async function run(a,d,msg){try{const j=await api(a,d);await load(1);if(msg)toast(msg);if(j&&j.warn)setTimeout(()=>toast('⚠ '+j.warn,1),900);return j}catch(e){toast(e.message,1);return false}}
+let lastApply=0;
+function applyBoot(j){
+  const q=$('#v input[placeholder="بحث..."]'),qv=q?q.value:'';
+  const sy=window.scrollY;
+  D=Object.assign(D,j);lastApply=Date.now();render();
+  const q2=$('#v input[placeholder="بحث..."]');if(q2&&qv){q2.value=qv;flt(q2)}
+  window.scrollTo(0,sy);
+}
+async function load(q){
+  // لو وصلت بيانات حديثة مع رد عملية قبل لحظات لا نكرر الطلب
+  if(q&&Date.now()-lastApply<1500)return;
+  try{
+    const j=await api('bootstrap');
+    delete j.ok;applyBoot(j);fbStart();
+    if(D.user.mustChange&&!force){force=true;A.pw()}
+  }catch(e){if(!q)toast(e.message,1)}
+}
+function out(expired){tok='';localStorage.removeItem('gh_tok');D.user=null;force=false;if(dlg.open)dlg.close();render();if(expired)toast('انتهت الجلسة، سجّل الدخول مرة أخرى',1)}
+
+/* ---------- عناصر مساعدة للواجهة (مشتركة بين المديولات) ---------- */
+const tbl=(h,r)=>'<table><thead><tr>'+h.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+(r.length?r.map(x=>'<tr>'+x.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join(''):'<tr><td colspan="'+h.length+'" style="text-align:center;color:var(--m)">لا توجد بيانات</td></tr>')+'</tbody></table>';
+const btn=(a,i,t,c='')=>`<button class="b s ${c}" data-a="${a}" data-i="${esc(i)}">${t}</button>`;
+const head=(t,a,l,extra='')=>`<div class="tb"><h2>${t}</h2><input style="width:200px" placeholder="بحث..." oninput="flt(this)">${extra}${a&&canV('c')?`<button class="b g" data-a="${a}" data-i="">${l}</button>`:''}</div>`;
+const flt=e=>$$('#v tbody tr').forEach(r=>r.hidden=!r.textContent.includes(e.value));
+const st=x=>`<span class="st">${esc(x)}</span>`;
+const fld=(l,n,v='',t='text',c='')=>`<div class="${c}"><label>${l}</label>${t=='ta'?`<textarea name="${n}" rows="2">${esc(v)}</textarea>`:`<input name="${n}" type="${t}" value="${esc(v)}">`}</div>`;
+const sel=(l,n,o,v,c='')=>`<div class="${c}"><label>${l}</label><select name="${n}">${o.map(x=>`<option value="${esc(x[0])}"${x[0]==v?' selected':''}>${esc(x[1])}</option>`).join('')}</select></div>`;
+const rd=(r='#m')=>{const o={};$$(r+' [name]').forEach(e=>o[e.name]=e.value);return o};
+const kv=(l,v)=>`<div><label>${l}</label><div>${esc(v)||'—'}</div></div>`;
+let mdlHook=null;
+function mdl(t,body,fn,ok='حفظ',forced){RID=newRid();$('#mt').textContent=t;$('#mb').innerHTML=body;$('#ms').textContent=ok;$('#ms').style.display=fn?'':'none';$('#mc').hidden=!!forced;H=fn;dlg.showModal();$$('#mb input[name=proj]').forEach(i=>i.setAttribute('list','pjl'));if(tl(view)==='r'&&mod!=='adm'&&!force)roStrip('#mb');if(mdlHook)mdlHook();if(typeof attInit==='function'&&$('#mb .att'))attInit()}
+$('#ms').onclick=async()=>{const b=$('#ms');b.disabled=true;try{const r=await H();if(r!==false)dlg.close()}finally{b.disabled=false}};
+dlg.oncancel=e=>{if(force)e.preventDefault()};
+document.onclick=e=>{const b=e.target.closest('[data-a]');if(b&&A[b.dataset.a])A[b.dataset.a](b.dataset.i)};
+// الطباعة: ننتظر تحميل الشعار ثم نطبع محتوى #ps
+function printHtml(html){
+  $('#ps').innerHTML=html;
+  const im=$('#ps img');
+  if(im&&!im.complete){im.onload=im.onerror=()=>window.print()}else setTimeout(()=>window.print(),100);
+}
+const printHead=(title)=>{const c=S();return `<div class="h">${c.logo?`<img src="${esc(c.logo)}" alt="">`:''}<div><h1>${esc(c.org)}</h1><span>${esc(c.tag)}</span></div><div class="t">${esc(title)}</div></div>`};
+const printFoot=()=>{const c=S();return `<div class="ft">${[c.addr,c.tel,c.mail].filter(Boolean).map(esc).join(' &nbsp;|&nbsp; ')||'&nbsp;'}</div>`};
+
+/* ---------- الدخول والخروج ---------- */
+function applyTheme(){const r=document.documentElement.style;r.setProperty('--p',S().p);r.setProperty('--a',S().a)}
+function setupView(){$('header').hidden=true;$('#v').innerHTML=`<div class="box lg"><h2>إعداد الاتصال</h2><p class="mu">الصق رابط الـ Web App (ينتهي بـ /exec)، أو ضعه في ملف config.js</p><input id="au" dir="ltr" placeholder="https://script.google.com/macros/s/.../exec"><button class="b" id="ab" style="width:100%">حفظ</button></div>`;$('#ab').onclick=()=>{const v=$('#au').value.trim();if(!/^https:\/\/script\.google\.com\//.test(v)){toast('الرابط غير صحيح',1);return}localStorage.setItem('gh_api',v);location.reload()}}
+function loginView(){
+  $('header').hidden=true;applyTheme();const c=S();
+  $('#v').innerHTML=`<div class="box lg">${c.logo?`<img src="${esc(c.logo)}" alt="">`:''}<h2>${esc(c.org)}</h2><p class="mu">نظام غيث المتكامل — تسجيل الدخول</p><label>اسم المستخدم</label><input id="lu" dir="ltr" autocomplete="username" autocapitalize="off"><label>كلمة المرور</label><input id="lp" type="password" dir="ltr" autocomplete="current-password"><button class="b" id="lb" style="width:100%;margin-top:8px">دخول</button></div>`;
+  const go=async()=>{const b=$('#lb');b.disabled=true;try{const j=await api('login',{username:$('#lu').value,password:$('#lp').value});tok=j.token;localStorage.setItem('gh_tok',tok);D.user=j.user;mod='';view='';await load()}catch(e){toast(e.message,1)}finally{b.disabled=false}};
+  $('#lb').onclick=go;$('#lp').onkeydown=e=>{if(e.key=='Enter')go()};
+}
+A.out=()=>{if(confirm('تسجيل الخروج؟'))out()};
+A.ref=()=>load();
+A.pw=()=>mdl('تغيير كلمة المرور',(force?'<div class="full mu">يجب تغيير كلمة المرور المؤقتة قبل المتابعة.</div>':'')+fld('كلمة المرور الحالية','o','','password','full')+fld('كلمة المرور الجديدة (6 أحرف على الأقل)','n','','password','full')+fld('تأكيد كلمة المرور الجديدة','n2','','password','full'),async()=>{const o=rd();if(o.n!=o.n2){toast('كلمتا المرور غير متطابقتين',1);return false}if(o.n.length<6){toast('كلمة المرور 6 أحرف على الأقل',1);return false}try{const j=await api('changePw',{old:o.o,nw:o.n});tok=j.token;localStorage.setItem('gh_tok',tok);force=false;D.user.mustChange=false;await load(1);toast('تم تغيير كلمة المرور');return true}catch(e){toast(e.message,1);return false}},'حفظ',force);
+
+/* ---------- تبديل المديولات والتنقل ---------- */
+const MOD_ORDER=['proc','inv','acc','don','adm'];
+const avMods=()=>MOD_ORDER.filter(k=>MODS[k]&&MODS[k].has()&&MODS[k].nav().some(n=>tl(n[0])!=='x'));
+function ensureNav(){
+  const ks=avMods();
+  if(!ks.includes(mod))mod=ks[0]||'proc';
+  const nav=(MODS[mod]?MODS[mod].nav():[]).filter(n=>tl(n[0])!=='x');
+  if(nav.length&&!nav.some(n=>n[0]==view))view=(LASTV[mod]&&nav.some(n=>n[0]==LASTV[mod]))?LASTV[mod]:nav[0][0];
+  return nav;
+}
+A.mod=k=>{LASTV[mod]=view;mod=k;view='';render()};
+A.go=i=>{view=i;LASTV[mod]=i;render()};
+
+function render(){
+  if(typeof ssClose==='function')ssClose();
+  if(!API_URL)return setupView();
+  if(!D.user)return loginView();
+  applyTheme();const c=S();$('header').hidden=false;
+  const nav=ensureNav();
+  $('#hb').innerHTML=(c.logo?`<img src="${esc(c.logo)}" alt="">`:'')+`<b>${esc(c.org)}</b><span style="flex:1"></span><button class="b s h" data-a="bell" title="الإشعارات">🔔${D.unread?` <b class="bn">${D.unread}</b>`:''}</button><span class="u">${esc(D.user.name)}</span><button class="b s h" data-a="xl" title="تصدير الشاشة الحالية إلى Excel">تصدير Excel</button><button class="b s h" data-a="ref">تحديث</button><button class="b s h" data-a="pw">كلمة المرور</button><button class="b s h" data-a="out">خروج</button>`;
+  const ks=avMods();
+  $('#mods').innerHTML=ks.map(k=>`<button class="${k==mod?'on':''}" data-a="mod" data-i="${k}">${MODS[k].title}</button>`).join('');
+  $('#nav').innerHTML=nav.map(([k,t])=>`<button class="${k==view?'on':''}" data-a="go" data-i="${k}">${t}</button>`).join('');
+  $('#pjl').innerHTML=((D.acc&&D.acc.projNames)||[]).map(n=>`<option value="${esc(n)}">`).join('');
+  $('#v').innerHTML=nav.length&&V[view]?V[view]():'<div class="box">لا توجد شاشات متاحة لهذا الحساب.</div>';
+  if(tl(view)==='r'){roStrip('#v');$('#v').insertAdjacentHTML('afterbegin','<div class="box" style="padding:6px 12px;background:#fff8e6;border-color:#e6c97a">🔒 هذا التاب للعرض فقط في حسابك.</div>')}
+}
+
+/* =====================================================================
+   مديول الإدارة (للمدير فقط): المستخدمون والصلاحيات، السجل، الإعدادات
+   ===================================================================== */
+MODS.adm={title:'الإدارة',has:()=>D.user.role==='admin',nav:()=>[['a_users','المستخدمون'],['a_prof','الأدوار والصلاحيات'],['a_dept','الإدارات'],['a_proj','المشاريع'],['a_log','السجل'],['a_set','الإعدادات']]};
+const whNames=x=>{
+  if(x.role==='admin'||x.inv==='manager')return 'كل المخازن';
+  if(!['storekeeper','viewer'].includes(x.inv))return '—';
+  if((x.wh||[]).includes('*'))return 'كل المخازن';
+  const W=(D.inv&&D.inv.wh)||[];
+  return (x.wh||[]).map(id=>(W.find(w=>w.id==id)||{}).name||'؟').join('، ')||'—';
+};
+V.a_dept=()=>{const L=DP(),leg=D.deptLegacy||[];
+  return head('دليل الإدارات (التكويد)','ndp','+ إدارة جديدة')+`<div class="box">${tbl(['الكود','اسم الإدارة','المسؤول','مستخدمون/مستندات','الحالة','إجراءات'],L.map(p=>[`<b>${esc(p.code)}</b>`,esc(p.name),esc(p.head),(D.deptUse||{})[p.id]||0,st(p.active?'نشط':'موقوف'),btn('ndp',p.id,'تعديل','o')]))}</div>
+<div class="box"><p class="mu">الإدارة المُكوَّدة تظهر كقائمة في بيانات المستخدم وفي طلب الشراء وطلب الصرف، ويُحفظ كودها في المستند، ويُفترض اختيار إدارة المستخدم تلقائيًا في الطلبات الجديدة. الإدارة الموقوفة لا تظهر للاختيار الجديد وتبقى مستنداتها. لا يتغير كود الإدارة بعد استخدامه. ملاحظة: الإدارة هنا للتنظيم والتقارير وليست بُعدًا محاسبيًا في القيود (الأبعاد المحاسبية هي المشروع).</p></div>`+
+(leg.length?`<div class="box"><h3>جهات مكتوبة يدويًا قبل التكويد</h3><p class="mu">أسماء كُتبت نصًا في طلبات قديمة ولا تطابق أي إدارة في الدليل. أنشئ لها إدارة بنفس الاسم لتُربط تلقائيًا.</p>${tbl(['الاسم المكتوب','عدد الطلبات',''],leg.map(x=>[esc(x.name),x.n,btn('ndpn',x.name,'إنشاء إدارة بهذا الاسم','o')]))}</div>`:'')};
+A.ndp=i=>{const x=i?DP().find(p=>p.id==i):{active:true};
+  mdl(i?'تعديل إدارة':'إدارة جديدة',fld(i&&(D.deptUse||{})[i]?'كود الإدارة (مقفل: مستخدم)':'كود الإدارة (اتركه فارغًا للترقيم التلقائي DEP-001)','code',x.code||'','text')+fld('اسم الإدارة','name',x.name,'text','full')+fld('مسؤول الإدارة','head',x.head||'','text','full')+fld('ملاحظات','note',x.note||'','ta','full')+(i?sel('الحالة','active',[['true','نشط'],['false','موقوف']],x.active?'true':'false'):''),
+  ()=>run('saveDept',{...rd(),id:i||undefined},'تم حفظ الإدارة'));
+  if(i&&(D.deptUse||{})[i])$('#m [name=code]').readOnly=true;
+};
+A.ndpn=n=>{A.ndp('');setTimeout(()=>{const e=$('#m [name=name]');if(e)e.value=n},0)};
+V.a_proj=()=>{const L=PJ(),leg=D.projLegacy||[];
+  return head('دليل المشاريع (التكويد)','nprj','+ مشروع جديد')+`<div class="box">${tbl(['الكود','اسم المشروع','الممول / الجهة المانحة','من','إلى','مستندات/قيود','الحالة','إجراءات'],L.map(p=>[`<b>${esc(p.code)}</b>`,esc(p.name),esc(p.funder),esc(p.start),esc(p.end),(D.projUse||{})[p.id]||0,st(p.active?'نشط':'موقوف'),btn('nprj',p.id,'تعديل','o')]))}</div>
+<div class="box"><h3>إعدادات المشاريع</h3><div class="db" id="pjs">${sel('إلزام اختيار مشروع في طلبات الشراء وأوامر التوريد وطلبات الصرف','projReq',[['false','اختياري (يمكن تركه فارغًا)'],['true','إلزامي']],String(S().projReq))}</div><button class="b" data-a="spj">حفظ</button>
+<p class="mu">المشروع المُكوَّد يظهر كقائمة منسدلة في طلب الشراء وأمر التوريد وطلب الصرف والصرف المباشر، ويُحفظ كوده في المستند، وتُوزَّع عليه القيود المحاسبية تلقائيًا. المشروع الموقوف لا يظهر للاختيار الجديد وتبقى مستنداته. لا يتغير كود المشروع بعد استخدامه.</p></div>`+
+(leg.length?`<div class="box"><h3>مشاريع مكتوبة يدويًا قبل التكويد</h3><p class="mu">هذه أسماء كُتبت نصًا في مستندات قديمة ولا تطابق أي مشروع في الدليل. أنشئ لها مشروعًا بنفس الاسم لتُربط تلقائيًا.</p>${tbl(['الاسم المكتوب','عدد المستندات',''],leg.map(x=>[esc(x.name),x.n,btn('nprjn',x.name,'إنشاء مشروع بهذا الاسم','o')]))}</div>`:'')};
+A.nprj=i=>{const x=i?PJ().find(p=>p.id==i):{active:true};
+  mdl(i?'تعديل مشروع':'مشروع جديد',fld(i&&(D.projUse||{})[i]?'كود المشروع (مقفل: عليه مستندات)':'كود المشروع (اتركه فارغًا للترقيم التلقائي PRJ-001)','code',x.code||'','text')+fld('اسم المشروع','name',x.name,'text','full')+fld('الممول / الجهة المانحة','funder',x.funder,'text','full')+fld('تاريخ البداية','start',x.start||'','date')+fld('تاريخ النهاية','end',x.end||'','date')+fld('ملاحظات','note',x.note||'','ta','full')+(i?sel('الحالة','active',[['true','نشط'],['false','موقوف']],x.active?'true':'false'):''),
+  ()=>run('saveProj',{...rd(),id:i||undefined},'تم حفظ المشروع'));
+  if(i&&(D.projUse||{})[i])$('#m [name=code]').readOnly=true;
+};
+A.nprjn=n=>{A.nprj('');setTimeout(()=>{const e=$('#m [name=name]');if(e)e.value=n},0)};
+A.spj=()=>run('saveSettings',rd('#pjs'),'تم حفظ إعدادات المشاريع');
+const TABL={proc:['المشتريات',[['p_dash','لوحة التحكم'],['p_pr','طلبات الشراء'],['p_po','أوامر التوريد'],['p_sup','الموردون']]],
+ inv:['المخازن',[['i_dash','لوحة التحكم'],['i_stock','الأرصدة'],['i_req','طلبات الصرف'],['i_grn','الاستلام'],['i_iss','الصرف'],['i_trf','التحويلات'],['i_cnt','الجرد'],['i_items','الأصناف'],['i_wh','المخازن']]],
+ acc:['الحسابات',[['c_dash','لوحة التحكم'],['c_je','القيود'],['c_ap','الموردون والسداد'],['c_gl','دفتر الأستاذ'],['c_tb','ميزان المراجعة'],['c_rep','القوائم المالية'],['c_coa','دليل الحسابات'],['c_dpn','تحصيل التبرعات'],['c_prj','المشروعات والممولون'],['c_map','ربط الحسابات'],['c_bud','الموازنات'],['c_trn','التحويلات'],['c_chq','الشيكات'],['c_bnk','التسوية البنكية'],['c_adv','العهد والسلف'],['c_fa','الأصول الثابتة'],['c_per','الفترات والفحص']]],
+ don:['التبرعات',[['d_dash','لوحة التحكم'],['d_donors','المتبرعون'],['d_don','التبرعات'],['d_plg','الالتزامات'],['d_com','التواصل والمتابعة'],['d_cmp','الحملات والمبادرات'],['d_chn','قنوات التحصيل'],['d_rep','التقارير']]]};
+const VB=[['v','عرض'],['c','إنشاء/تعديل'],['a','اعتماد/ترحيل'],['d','حذف/إلغاء'],['x','تقارير']];
+const MODN={proc:'المشتريات',inv:'المخازن',acc:'الحسابات',don:'التبرعات'};
+const MODR={proc:ROLES,inv:IROLES,acc:AROLES,don:DROLES};
+const LIMN=[['pr','حد اعتماد طلب الشراء'],['po','حد اعتماد أمر التوريد'],['pay','حد سداد الموردين'],['je','حد ترحيل القيد'],['don','حد اعتماد التبرع']];
+const wlist=()=>((D.inv&&D.inv.wh)||[]);
+const canV=(v,k)=>{const u=D.user;if(!u||u.role==='admin')return true;k=k||view;return !((u.deny||{})[k]||'').includes(v)};
+// مصفوفة صلاحيات التابات: عرض | إنشاء/تعديل | اعتماد | حذف | تقارير
+const matrixHtml=(tabs,deny)=>`<div class="mu" style="margin-bottom:6px">لكل تاب: ألغِ «عرض» لإخفائه بالكامل، وألغِ باقي الأفعال لمنعها (التحقق في الخادم). الصلاحية الفعلية = الأضيق بين «صلاحية المديول» وهذه المصفوفة.</div>${Object.entries(TABL).map(([m,[t,L]])=>`<details class="tbm" data-m="${m}" open><summary>${t}</summary><div style="overflow-x:auto"><table class="pm"><thead><tr><th>التاب</th>${VB.map(v=>`<th>${v[1]}</th>`).join('')}</tr></thead><tbody>${L.map(([k,n])=>{const lv=(tabs||{})[k]||'',dn=(deny||{})[k]||'';return `<tr><td>${n}</td>${VB.map(([v])=>{let on=true;if(v==='v')on=lv!=='x';else if(lv==='x')on=false;else if(lv==='r'&&v!=='x')on=false;else if(dn.includes(v))on=false;return `<td><input type="checkbox" data-pt="${k}" data-pv="${v}"${on?' checked':''}></td>`}).join('')}</tr>`}).join('')}</tbody></table></div></details>`).join('')}`;
+const matrixGet=r=>{const tabs={},deny={};Object.values(TABL).forEach(([t,L])=>L.forEach(([k])=>{const g=v=>{const e=$(r+` [data-pt="${k}"][data-pv="${v}"]`);return e?e.checked:true};if(!g('v')){tabs[k]='x';return}const dn=['c','a','d','x'].filter(v=>!g(v));if(!g('c')&&!g('a')&&!g('d'))tabs[k]='r';const d2=dn.filter(v=>tabs[k]!=='r'||v==='x');if(d2.length)deny[k]=d2.join('')}));return {tabs,deny}};
+const scopeHtml=(sc,id)=>{sc=sc||{};const W=wlist(),wh=sc.whs||[];return `<div id="${id}" class="full"><label class="chk"><input type="checkbox" data-so${sc.own?' checked':''}> يرى ويعمل على طلبات <b>إدارته فقط</b> (إدارة المستخدم المسجلة في بياناته)</label>
+<div class="mu" style="margin:6px 0 2px">إدارات إضافية يشملها النطاق (بدون تحديد = لا قيد على الإدارات):</div>${DP().map(d=>`<label class="chk"><input type="checkbox" data-sd value="${esc(d.code)}"${(sc.depts||[]).includes(d.code)?' checked':''}> ${esc(d.name)}</label>`).join('')||'<span class="mu"> (لا إدارات مُكوَّدة)</span>'}
+<div class="mu" style="margin:8px 0 2px">المشروعات المسموحة (بدون تحديد = كل المشروعات). سجلات المستخدم نفسه تظهر دائمًا:</div>${PJ().map(p=>`<label class="chk"><input type="checkbox" data-sp value="${esc(p.code)}"${(sc.projs||[]).includes(p.code)?' checked':''}> ${esc(p.name)}</label>`).join('')||'<span class="mu"> (لا مشروعات مُكوَّدة)</span>'}
+<div class="mu" style="margin:8px 0 2px">المخازن (لأمين المخزن والمراجع):</div><label class="chk"><input type="checkbox" data-sw value="*"${wh.includes('*')?' checked':''}> كل المخازن</label>${W.map(w=>`<label class="chk"><input type="checkbox" data-sw value="${esc(w.id)}"${wh.includes(w.id)?' checked':''}> ${esc(w.name)}</label>`).join('')||'<span class="mu"> (لا مخازن)</span>'}</div>`};
+const scopeGet=id=>{const r='#'+id,o={own:!!($(r+' [data-so]')||{}).checked};o.depts=$$(r+' [data-sd]:checked').map(e=>e.value);o.projs=$$(r+' [data-sp]:checked').map(e=>e.value);let w=$$(r+' [data-sw]:checked').map(e=>e.value);if(w.includes('*'))w=['*'];o.whs=w;return o};
+const scopeTxt=sc=>{sc=sc||{};const a=[];if(sc.own)a.push('إدارته');if((sc.depts||[]).length)a.push(sc.depts.length+' إدارة');if((sc.projs||[]).length)a.push(sc.projs.length+' مشروع');if((sc.whs||[]).length)a.push((sc.whs||[]).includes('*')?'كل المخازن':sc.whs.length+' مخزن');return a.join('، ')||'—'};
+const modTxt=m=>Object.entries(MODN).filter(([k])=>m&&m[k]&&m[k]!=='none').map(([k,n])=>n+': '+(MODR[k][m[k]]||m[k])).join(' · ')||'—';
+const limTxt=l=>LIMN.filter(([k])=>l&&l[k]).map(([k,n])=>n.replace('حد ','')+' ≤ '+f(l[k])).join('، ')||'—';
+V.a_prof=()=>head('الأدوار والصلاحيات','npf','+ دور جديد')+`<div class="box">${tbl(['الدور','الوصف','المديولات','الحدود المالية','نطاق البيانات','مستخدمون','الحالة','إجراءات'],(D.profiles||[]).map(p=>[`<b>${esc(p.name)}</b>`,esc(p.desc==='auto'?'(أُنشئ تلقائيًا من صلاحيات قديمة)':p.desc),esc(modTxt(p.mods)),esc(limTxt(p.limits)),esc(scopeTxt(p.scope)),p.users,st(p.active?'نشط':'موقوف'),btn('npf',p.id,'تعديل','o')+btn('cpf',p.id,'نسخ','o')+(p.users?'':btn('xpf',p.id,'حذف','r'))]))}</div>
+<div class="box"><p class="mu">الدور مجموعة صلاحيات تُسنَد لأي عدد من المستخدمين، وتعديل الدور يسري عليهم فورًا. يتكوّن من: صلاحية كل مديول (الدور الأساسي) + مصفوفة التابات والأفعال (عرض/إنشاء/اعتماد/حذف/تقارير) + حدود اعتماد مالية + نطاق بيانات (إدارات ومشروعات ومخازن). يمكن لكل مستخدم نطاق خاص يحل محل نطاق الدور. مدير النظام فوق كل ذلك.<br>حدّ الاعتماد: أي قيمة أكبر منه تُرفض ويلزم مستوى أعلى (فارغ = بلا حد). نطاق الإدارة/المشروع يخفي طلبات الشراء وأوامر التوريد وطلبات الصرف والتبرعات خارج النطاق، وسجلات المستخدم نفسه تظهر دائمًا.</p></div>`;
+A.npf=(i,copy)=>{const x=i?(D.profiles||[]).find(p=>p.id==i):{mods:{},tabs:{},deny:{},limits:{},scope:{},active:true};const mods=x.mods||{};
+  mdl(copy?'نسخ دور':i?'تعديل دور':'دور جديد',fld('اسم الدور','name',copy?x.name+' (نسخة)':x.name||'','text','full')+fld('الوصف','desc',x.desc==='auto'?'':x.desc||'','text','full')+
+   Object.keys(MODN).map(k=>sel('صلاحية '+MODN[k]+' (الدور الأساسي)','m_'+k,Object.entries(MODR[k]).filter(e=>e[0]!=='admin'),mods[k]||'none')).join('')+
+   (i&&!copy?sel('الحالة','active',[['true','نشط'],['false','موقوف']],x.active?'true':'false'):'')+
+   `<div class="full"><label>التابات والأفعال</label><div id="pmx">${matrixHtml(x.tabs,x.deny)}</div></div>`+
+   `<div class="full"><label>الحدود المالية للاعتماد (ج.م، فارغ = بلا حد)</label><div class="db">${LIMN.map(([k,n])=>fld(n,'l_'+k,(x.limits||{})[k]||'','number')).join('')}</div></div>`+
+   `<div class="full"><label>نطاق البيانات الافتراضي لهذا الدور</label>${scopeHtml(x.scope,'psc')}</div>`,
+  ()=>{const o=rd(),m={},l={};Object.keys(MODN).forEach(k=>m[k]=o['m_'+k]);LIMN.forEach(([k])=>{if(o['l_'+k])l[k]=+o['l_'+k]});const mx=matrixGet('#pmx');
+   return run('saveProfile',{id:copy?undefined:i||undefined,name:o.name,desc:o.desc,active:o.active,mods:m,tabs:mx.tabs,deny:mx.deny,limits:l,scope:scopeGet('psc')},'تم حفظ الدور')});
+};
+A.cpf=i=>A.npf(i,1);
+A.xpf=i=>{if(confirm('حذف هذا الدور نهائيًا؟'))run('delProfile',{id:i},'تم حذف الدور')};
+A.mig=()=>{if(confirm('إنشاء أدوار مطابقة لصلاحيات المستخدمين القدامى وإسنادها لهم؟'))run('migrateUsers',{},'تم ترحيل المستخدمين')};
+V.a_users=()=>head('المستخدمون والصلاحيات','nu','+ مستخدم جديد')+(D.users.some(x=>x.legacy)?`<div class="box" style="border-color:#d9a441"><b>${D.users.filter(x=>x.legacy).length} مستخدم بصلاحيات قديمة بلا دور</b> — لا يملكون أي وصول حتى يُسنَد لهم دور. <button class="b g" data-a="mig">إنشاء أدوار مطابقة وإسنادها تلقائيًا</button></div>`:'')+`<div class="box">${tbl(['اسم المستخدم','الاسم','الإدارة','الدور','نطاق البيانات','الحالة','إجراءات'],D.users.map(x=>[esc(x.username),esc(x.name),esc(dpl(x.dept))||'—',x.role==='admin'?'مدير النظام':(x.profName?esc(x.profName):'<span class="st" style="background:#f6dede">بلا دور</span>'),x.role==='admin'?'كل البيانات':esc(scopeTxt(x.escope)),st(x.active?'نشط':'معطّل'),btn('nu',x.username,'تعديل / إعادة كلمة المرور','o')]))}</div>
+<div class="box"><h3>مديول المشتريات</h3>${tbl(['الصلاحية','ما تسمح به'],[[ROLES.requester,'إنشاء طلبات شراء ومتابعة طلباته فقط، وتعديل المرفوض منها'],[ROLES.approver,'رؤية كل الطلبات، اعتماد/رفض طلبات الشراء، اعتماد أوامر التوريد، رؤية المتاح في المخزن'],[ROLES.procurement,'تحويل الطلبات المعتمدة لأوامر توريد، إدارة الموردين، إغلاق الاستلام، رؤية حالة استلام أوامره'],[ROLES.finance,'متابعة أوامر التوريد وتسجيل السداد (بعد اكتمال الاستلام)']])}</div>
+<div class="box"><h3>مديول المخازن</h3>${tbl(['الصلاحية','ما تسمح به'],[[IROLES.requester,'إنشاء طلبات صرف ومتابعتها فقط (يرى المتاح من الأصناف دون تكلفة)'],[IROLES.storekeeper,'في مخازنه فقط: استلام من أوامر التوريد، صرف على طلبات معتمدة، تحويل، إعداد الجرد، إضافة أصناف. لا يرى التكلفة ولا يعتمد'],[IROLES.manager,'كل المخازن: اعتماد طلبات الصرف والجرد، عكس المستندات، الأرصدة الافتتاحية، المخازن والأصناف، فحص السلامة، الصرف المباشر، يرى التكلفة'],[IROLES.viewer,'اطلاع فقط على أرصدة ومستندات مخازنه مع التكلفة، دون أي تعديل']])}<p class="mu">المدير العام (صلاحية المشتريات: مدير النظام) يملك كل شيء في المديولات. يمكن لنفس الشخص أن يحمل صلاحية في أكثر من مديول.</p></div>
+<div class="box"><h3>مديول التبرعات</h3>${tbl(['الصلاحية','ما تسمح به'],[[DROLES.officer,'تسجيل المتبرعين والتبرعات (كمسودات) والالتزامات وسجل التواصل والمتابعة، وتعديل ما أنشأه فقط. لا يعتمد التبرعات ولا يلغيها ولا يدير الحملات'],[DROLES.manager,'اعتماد التبرعات (غير التي سجّلها بنفسه) وإصدار الإيصال، إلغاؤها، قنوات التحصيل، إدارة الحملات والمبادرات، شطب الالتزامات، حذف المتبرعين غير المستخدمين، كل التقارير'],[DROLES.viewer,'اطلاع فقط على المتبرعين والتبرعات والتقارير']])}<p class="mu">القيد المحاسبي للتبرع النقدي لا يُرحَّل باعتماد مدير التبرعات؛ يؤكد التحصيل ويرحّله مستخدم الحسابات (محاسب أو مدير حسابات) من تاب «تحصيل التبرعات» في مديول الحسابات دون الحاجة لصلاحية على بيانات المتبرعين. يمكن تقييد أي تاب بذاته (مخفي / عرض فقط) من قسم «صلاحيات التابات».</p></div>
+<div class="box"><h3>مديول الحسابات</h3>${tbl(['الصلاحية','ما تسمح به'],[[AROLES.accountant,'إعداد القيود اليدوية وسندات القبض والصرف كمسودات، تسجيل سداد الموردين، قراءة التقارير. لا يرحّل قيودًا ولا يعدّل الدليل'],[AROLES.manager,'ترحيل القيود (غير قيوده) أو رفضها وعكسها، دليل الحسابات والمشروعات، عكس السداد، إقفال الفترات'],[AROLES.viewer,'اطلاع فقط على القيود والتقارير'],['المشتريات: مالية','تسجيل سداد الموردين من أمر التوريد فقط دون الدخول لباقي الحسابات']])}</div>`;
+A.nu=i=>{
+  const x=i?D.users.find(u=>u.username==i):{prof:'',active:true,scope:{}};
+  const ov=x.scope&&Object.keys(x.scope).length>0,cur=x.role==='admin'?'@admin':(x.prof||'');
+  const P=(D.profiles||[]).filter(p=>p.active||p.id===cur);
+  mdl(i?'تعديل مستخدم':'مستخدم جديد',
+    (i?`<div><label>اسم المستخدم</label><input name="username" value="${esc(i)}" readonly></div>`:fld('اسم المستخدم (إنجليزي بدون مسافات)','username','','text'))+
+    fld('الاسم الظاهر','name',x.name)+
+    fld('البريد الإلكتروني (للإشعارات، اختياري)','email',x.email||'','email')+
+    dsl('الإدارة',x.dept||'','','dept',1)+
+    sel('الدور','prof',[['','— اختر دورًا —'],['@admin','مدير النظام (كل الصلاحيات)']].concat(P.map(p=>[p.id,p.name+(p.active?'':' (موقوف)')])),cur,'full')+
+    `<div class="full" id="prinfo" class="mu"></div>`+
+    `<div class="full" id="scbox"><label class="chk"><input type="checkbox" id="uso"${ov?' checked':''}> تخصيص نطاق بيانات لهذا المستخدم (يحل محل نطاق الدور)</label><div id="usb"${ov?'':' hidden'}>${scopeHtml(x.scope,'usc')}</div></div>`+
+    sel('الحالة','active',[['true','نشط'],['false','معطّل']],String(x.active))+
+    fld(i?'كلمة مرور جديدة (اتركها فارغة بدون تغيير)':'كلمة المرور المؤقتة (6 أحرف على الأقل)','password','','text','full'),
+    ()=>{const o=rd();if(!i&&o.password.length<6){toast('كلمة المرور 6 أحرف على الأقل',1);return false}
+      if(!o.prof){toast('اختر دورًا للمستخدم',1);return false}
+      const sc=$('#uso').checked?scopeGet('usc'):{};
+      return run('saveUser',{...o,scope:sc},'تم حفظ المستخدم')});
+  const sync=()=>{const p=(D.profiles||[]).find(z=>z.id==$('#m [name=prof]').value),b=$('#prinfo'),ad=$('#m [name=prof]').value==='@admin';$('#scbox').hidden=ad;if(b)b.innerHTML=ad?'<span class="mu">مدير النظام يملك كل الصلاحيات على كل المديولات والبيانات.</span>':p?`<span class="mu">${esc(modTxt(p.mods))}${(p.scope&&scopeTxt(p.scope)!=='—')?' — نطاق الدور: '+esc(scopeTxt(p.scope)):''}</span>`:''};
+  $('#m [name=prof]').onchange=sync;$('#uso').onchange=()=>{$('#usb').hidden=!$('#uso').checked};sync();
+};
+V.a_log=()=>head('سجل العمليات')+`<div class="box">${tbl(['الوقت','المستخدم','الإجراء','المرجع','تفاصيل'],D.log.map(l=>[new Date(l.time).toLocaleString('en-GB'),esc(l.user),esc(l.action),esc(l.ref),esc(l.details)]))}</div>`;
+V.a_set=()=>{const c=S();return `<div class="box"><h3>الهوية والبيانات</h3><div class="db" id="sf">${fld('اسم المؤسسة','org',c.org,'text','full')}${fld('الشعار الفرعي','tag',c.tag,'text','full')}${fld('اللون الأساسي','p',c.p,'color')}${fld('اللون الثانوي','a',c.a,'color')}${fld('نسبة الضريبة الافتراضية %','vat',c.vat,'number')}${fld('الهاتف','tel',c.tel)}${fld('العنوان','addr',c.addr)}${fld('البريد الإلكتروني','mail',c.mail)}${fld('رابط الشعار (مثال: logo.png إذا رفعته مع الملفات على GitHub)','logo',c.logo,'text','full')}<div class="full"><label>أو ارفع صورة (تُصغَّر تلقائيًا)</label><input type="file" accept="image/*" onchange="lg(this.files[0])">${c.logo?'<img src="'+esc(c.logo)+'" height="60" alt="">':''}</div>
+${sel('ربط المشتريات بالمخازن (الاستلام من المخازن فقط)','invLink',[['true','مفعّل (موصى به)'],['false','معطّل: تأكيد استلام يدوي من المشتريات']],String(c.invLink))}${fld('نسبة السماح بالزيادة عند الاستلام %','tol',c.tol,'number')}${fld('نص يظهر أسفل إيصال التبرع (شكر / رقم تسجيل المؤسسة)','donNote',c.donNote,'ta','full')}</div><button class="b" data-a="sset">حفظ الإعدادات</button></div>
+<div class="box"><h3>النسخ الاحتياطي على GitHub</h3><p class="mu">البيانات محفوظة أصلًا في Google Sheet. هذا الزر يرسل نسخة JSON (المشتريات والمخازن) إلى مستودع GitHub خاص (بعد ضبط GH_REPO و GH_TOKEN في Apps Script). النسخ اليومي التلقائي يُفعَّل من دالة installDailyBackup.</p><button class="b o" data-a="bk">نسخ احتياطي الآن</button></div>
+<div class="box"><h3>تصدير كل البيانات إلى Excel</h3><p class="mu">ملف واحد بأوراق منفصلة: طلبات الشراء وبنودها، أوامر التوريد وبنودها، الموردون، الأصناف، المخازن، مستندات المخازن وبنودها، دفتر المخزون، دليل الحسابات، المشروعات، القيود وسطورها، دفعات الموردين، المتبرعون والتبرعات والحملات والالتزامات وسجل التواصل، المستخدمون، وسجل العمليات.</p><button class="b o" data-a="xall">تصدير كل البيانات</button></div>`};
+A.sset=()=>run('saveSettings',rd('#sf'),'تم حفظ الإعدادات');
+A.bk=async()=>{try{const j=await api('backup');toast('تم النسخ إلى '+j.path)}catch(e){toast(e.message,1)}};
+function lg(fl){if(!fl)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,200/im.width),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);const u=c.toDataURL('image/jpeg',.8);if(u.length>44000){toast('الصورة كبيرة، استخدم رابط الشعار بدلًا منها',1);return}$('#sf [name=logo]').value=u;toast('تم تجهيز الشعار، اضغط حفظ الإعدادات')};im.src=r.result};r.readAsDataURL(fl)}
+</script>
+<!-- المديولات: كل واحد في ملف مستقل -->
+<script src="export.js"></script>
+<script src="mod-procurement.js"></script>
+<script src="mod-inventory.js"></script>
+<script src="mod-accounting.js"></script>
+<script src="mod-donations.js"></script>
+<script src="mod-extras.js"></script>
+<script src="mod-finance2.js"></script>
+<script>
+(async()=>{
+  if(!API_URL){render();return}
+  if(tok){await load(1);if(D.user)return}
+  render();
+  try{const j=await api('pub');Object.assign(D.settings,j.settings);render()}catch(e){toast(e.message,1)}
+})();
+
+/* ---------- قوائم منسدلة قابلة للبحث بجزء من الكلمة ----------
+   أي قائمة فيها أكثر من 6 خيارات تتحول تلقائيًا لحقل بحث (يتجاهل التشكيل والهمزات والتاء المربوطة).
+   القائمة الأصلية (select) تبقى موجودة ومخفية فلا يتأثر باقي الكود. */
+const nz=x=>String(x||'').toLowerCase().replace(/[ً-ٟـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/\s+/g,' ').trim();
+function ssClose(){if(ssOpen){ssOpen.remove();ssOpen=null}}
+function ssEnhance(sel){
+  if(sel.dataset.ss||sel.multiple||sel.options.length<=6||sel.closest('.ss'))return;
+  sel.dataset.ss='1';
+  const w=document.createElement('span');w.className='ss';
+  const width=sel.offsetWidth||0;if(width)w.style.width=width+'px';else w.style.minWidth='180px';
+  const inp=document.createElement('input');inp.type='text';inp.autocomplete='off';inp.placeholder='اكتب للبحث...';inp.disabled=sel.disabled;
+  sel.parentNode.insertBefore(w,sel);w.appendChild(inp);w.appendChild(sel);sel.style.display='none';
+  const lab=()=>{const o=sel.options[sel.selectedIndex];return o?o.textContent.trim():''};
+  const sync=()=>{inp.value=lab();inp.disabled=sel.disabled};
+  const proto=Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value');
+  Object.defineProperty(sel,'value',{get(){return proto.get.call(sel)},set(v){proto.set.call(sel,v);sync()},configurable:true});
+  let act=-1,list=null,items=[];
+  const pick=i=>{const o=items[i];if(!o)return;sel.selectedIndex=o.index;sync();ssClose();sel.dispatchEvent(new Event('input',{bubbles:true}));sel.dispatchEvent(new Event('change',{bubbles:true}))};
+  const show=()=>{
+    const q=nz(inp.dataset.q||'');
+    items=[...sel.options].filter(o=>!o.disabled&&(!q||nz(o.textContent).includes(q)));
+    ssClose();list=document.createElement('div');list.className='ssl';
+    const r=inp.getBoundingClientRect();
+    list.style.top=Math.min(r.bottom+2,innerHeight-120)+'px';list.style.right=Math.max(4,innerWidth-r.right)+'px';list.style.minWidth=Math.max(200,r.width)+'px';
+    list.innerHTML=items.length?items.map((o,i)=>`<div data-i="${i}"${o.index===sel.selectedIndex?' class="on"':''}>${esc(o.textContent.trim())||'—'}</div>`).join(''):'<div class="no">لا توجد نتائج</div>';
+    (inp.closest('dialog[open]')||document.body).appendChild(list);ssOpen=list;
+    act=Math.max(0,items.findIndex(o=>o.index===sel.selectedIndex));
+    const el=list.children[act];if(el&&items.length){el.classList.add('on');el.scrollIntoView({block:'nearest'})}
+    list.onmousedown=e=>{const d=e.target.closest('[data-i]');if(d){e.preventDefault();pick(+d.dataset.i)}};
+  };
+  const mark=()=>{[...list.children].forEach((c,i)=>c.classList.toggle('on',i===act));const c=list.children[act];if(c)c.scrollIntoView({block:'nearest'})};
+  inp.addEventListener('focus',()=>{inp.dataset.q='';inp.select();show()});
+  inp.addEventListener('click',()=>{if(!ssOpen){inp.dataset.q='';show()}});
+  inp.addEventListener('input',()=>{inp.dataset.q=inp.value;show()});
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(!ssOpen){inp.dataset.q='';show();return}if(items.length){act=(act+(e.key==='ArrowDown'?1:-1)+items.length)%items.length;mark()}}
+    else if(e.key==='Enter'){if(ssOpen){e.preventDefault();e.stopPropagation();pick(act)}}
+    else if(e.key==='Escape'){if(ssOpen){e.stopPropagation();e.preventDefault();ssClose();sync()}}
+    else if(e.key==='Tab'){ssClose();sync()}
+  });
+  inp.addEventListener('blur',()=>setTimeout(()=>{if(document.activeElement!==inp){ssClose();sync()}},120));
+  sel.addEventListener('change',sync);
+  new MutationObserver(sync).observe(sel,{childList:true,subtree:true,attributes:true,attributeFilter:['disabled','selected']});
+  sync();
+}
+const ssScan=(root)=>{(root||document).querySelectorAll&&(root||document).querySelectorAll('select').forEach(ssEnhance)};
+new MutationObserver(m=>{let go=false;m.forEach(x=>x.addedNodes.forEach(n=>{if(n.nodeType===1&&(n.tagName==='SELECT'||n.querySelector('select')))go=true}));if(go)requestAnimationFrame(()=>ssScan())}).observe(document.body,{childList:true,subtree:true});
+addEventListener('scroll',e=>{if(!(ssOpen&&ssOpen.contains(e.target)))ssClose()},true);addEventListener('resize',ssClose);
+
+/* ---------- بث التغيير الفوري (اختياري): Firebase Realtime Database ----------
+   Apps Script لا يدفع إشعارات للمتصفحات، لذلك نستخدم قناة إشعار خفيفة خارجه: كل متصفح ينفّذ عملية كتابة يرسل «علامة تغيير»
+   إلى مسار v في قاعدة Firebase، وكل المتصفحات الأخرى (في أي مكان) تستمع إليه عبر EventSource فتتحدث خلال أقل من ثانية.
+   العلامة لا تحمل أي بيانات، وكل متصفح يتحقق من رقم النسخة عبر ping قبل التحديث. بدون ضبط FB يعمل الفحص الدوري كما كان. */
+const FBU=String(CFG.FB||'').trim().replace(/\/+$/,'');
+let fbLast='',fbSeen=null,fbOpen=false,fbES=null;
+function fbNotify(){
+  if(!FBU)return;
+  fbLast=Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  try{fetch(FBU+'/v.json',{method:'PUT',body:JSON.stringify(fbLast),keepalive:true}).catch(()=>{})}catch(e){}
+}
+function fbStart(){
+  if(!FBU||!window.EventSource||fbES)return;
+  fbES=new EventSource(FBU+'/v.json');
+  fbES.addEventListener('put',e=>{
+    try{
+      const d=JSON.parse(e.data);if(d.path!=='/')return;
+      const v=d.data;
+      if(fbSeen===null){fbSeen=v;return}
+      if(v===fbSeen||v===fbLast){fbSeen=v;return}
+      fbSeen=v;if(D.user)tick();
+    }catch(x){}
+  });
+  fbES.onopen=()=>{if(fbOpen&&D.user)tick();fbOpen=true};
+}
+/* ---------- المزامنة الفورية بين المستخدمين ----------
+   فحص خفيف (ping) كل بضع ثوانٍ؛ إن تغيّر رقم نسخة البيانات نحمّل أحدث البيانات فورًا.
+   يتوقف مؤقتًا أثناء التحرير (نافذة مفتوحة أو حقل قيد الكتابة) ويُستأنف لحظة الانتهاء. */
+let lastAct=Date.now(),pingBusy=false,pendingRemote=false;
+['pointerdown','keydown','touchstart'].forEach(ev=>addEventListener(ev,()=>{lastAct=Date.now()},{passive:true}));
+const editing=()=>{if(dlg.open)return true;const a=document.activeElement;return !!(a&&a.closest&&a.closest('#v')&&/^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName)&&(a.type!=='search')&&a.getAttribute('placeholder')!=='بحث...')};
+async function tick(){
+  if(!D.user||document.hidden||pingBusy||nb>0)return;
+  pingBusy=true;
+  try{
+    const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'ping',token:tok})});
+    const j=await r.json();
+    if(!j.ok){if(j.auth)out(true);return}
+    pendingRemote=!!(D.v&&j.v!==D.v);
+    if(pendingRemote&&!editing()&&!$('#sf')){await load(0);pendingRemote=false}
+  }catch(e){/* انقطاع مؤقت: نحاول في الدورة التالية */}
+  finally{pingBusy=false}
+}
+// 3 ثوانٍ أثناء النشاط، 15 ثانية بعد دقيقتين خمول، 60 ثانية بعد 10 دقائق (يوفّر حصة Apps Script اليومية)
+(function loop(){const idle=Date.now()-lastAct,d=pendingRemote?2000:(FBU&&fbOpen)?(idle<12e4?20000:60000):(idle<12e4?3000:idle<6e5?15000:60000);setTimeout(async()=>{await tick();loop()},d)})();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&D.user)tick()});
+</script>
+</body>
+</html>
